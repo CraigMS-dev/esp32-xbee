@@ -120,7 +120,6 @@ void app_main()
         status_led->active = true;
     }
 
-
     net_init();
     wifi_init();
 

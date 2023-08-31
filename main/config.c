@@ -104,7 +104,7 @@ const config_item_t CONFIG_ITEMS[] = {
         {
                 .key = KEY_CONFIG_NTRIP_CLIENT_ACTIVE,
                 .type = CONFIG_ITEM_TYPE_BOOL,
-                .def.bool1 = false
+                .def.bool1 = true
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_COLOR,
                 .type = CONFIG_ITEM_TYPE_COLOR,
@@ -112,7 +112,7 @@ const config_item_t CONFIG_ITEMS[] = {
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_HOST,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = ""
+                .def.str = "positionz-rt.linz.govt.nz"
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_PORT,
                 .type = CONFIG_ITEM_TYPE_UINT16,
@@ -120,16 +120,16 @@ const config_item_t CONFIG_ITEMS[] = {
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_MOUNTPOINT,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = ""
+                .def.str = "LEVN00NZL0"
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_USERNAME,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = ""
+                .def.str = "taykotech"
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_PASSWORD,
                 .type = CONFIG_ITEM_TYPE_STRING,
                 .secret = true,
-                .def.str = ""
+                .def.str = "Lyttleton1363"
         },
 
         {
@@ -267,7 +267,7 @@ const config_item_t CONFIG_ITEMS[] = {
         }, {
                 .key = KEY_CONFIG_WIFI_AP_SSID,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = ""
+                .def.str = "MAFDL Guests"
         }, {
                 .key = KEY_CONFIG_WIFI_AP_SSID_HIDDEN,
                 .type = CONFIG_ITEM_TYPE_BOOL,
@@ -280,7 +280,7 @@ const config_item_t CONFIG_ITEMS[] = {
                 .key = KEY_CONFIG_WIFI_AP_PASSWORD,
                 .type = CONFIG_ITEM_TYPE_STRING,
                 .secret = true,
-                .def.str = ""
+                .def.str = "Awesomeness"
         }, {
                 .key = KEY_CONFIG_WIFI_AP_GATEWAY,
                 .type = CONFIG_ITEM_TYPE_IP,
