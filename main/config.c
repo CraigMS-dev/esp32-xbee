@@ -112,7 +112,7 @@ const config_item_t CONFIG_ITEMS[] = {
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_HOST,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = "positionz-rt.linz.govt.nz"
+                .def.str = "192.168.50.223"
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_PORT,
                 .type = CONFIG_ITEM_TYPE_UINT16,
@@ -120,16 +120,16 @@ const config_item_t CONFIG_ITEMS[] = {
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_MOUNTPOINT,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = "LEVN00NZL0"
+                .def.str = "MAFB0"
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_USERNAME,
                 .type = CONFIG_ITEM_TYPE_STRING,
-                .def.str = "taykotech"
+                .def.str = "gps"
         }, {
                 .key = KEY_CONFIG_NTRIP_CLIENT_PASSWORD,
                 .type = CONFIG_ITEM_TYPE_STRING,
                 .secret = true,
-                .def.str = "Lyttleton1363"
+                .def.str = "gps"
         },
 
         {
