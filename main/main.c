@@ -38,6 +38,12 @@
 #include "interface/ntrip.h"
 #include "tasks.h"
 
+#define LED_PIN1 26
+#define LED_PIN2 34
+
+static const BaseType_t pro_cpu = 1;
+// static const BaseType_t app_cpu = 1;
+
 static const char *TAG = "MAIN";
 
 static char *reset_reason_name(esp_reset_reason_t reason);
@@ -54,6 +60,30 @@ static void reset_button_task() {
                 esp_restart();
             }
         }
+    }
+}
+
+void toggleLED1(void *parameters){
+    gpio_pad_select_gpio(LED_PIN1);
+    gpio_set_direction (LED_PIN1, GPIO_MODE_OUTPUT);
+
+    while(1){
+        gpio_set_level (LED_PIN1,0);
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+        gpio_set_level (LED_PIN1,1);
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+    }
+}
+
+void toggleLED2(void *parameters){
+    gpio_pad_select_gpio(LED_PIN2);
+    gpio_set_direction (LED_PIN2, GPIO_MODE_OUTPUT);
+
+    while(1){
+        gpio_set_level (LED_PIN2,0);
+        vTaskDelay(1000/portTICK_PERIOD_MS);
+        gpio_set_level (LED_PIN2,1);
+        vTaskDelay(1000/portTICK_PERIOD_MS);
     }
 }
 
@@ -76,6 +106,26 @@ void app_main()
     core_dump_check();
 
     xTaskCreate(reset_button_task, "reset_button", 4096, NULL, TASK_PRIORITY_RESET_BUTTON, NULL);
+
+    xTaskCreatePinnedToCore(
+        toggleLED1,      // Function to be called
+        "Toggle LED1",   // Name of task
+        1024,           // Stack size
+        NULL,           // Parameter to pass to function
+        1,              // Task priority (0 - configMAX_PRIORITIES - 1)
+        NULL,           // Task Handle
+        pro_cpu         // Which core?
+        );
+
+    // xTaskCreatePinnedToCore(
+    //     toggleLED2,      // Function to be called
+    //     "Toggle LED2",   // Name of task
+    //     1024,           // Stack size
+    //     NULL,           // Parameter to pass to function
+    //     1,              // Task priority (0 - configMAX_PRIORITIES - 1)
+    //     NULL,           // Task Handle
+    //     pro_cpu         // Which core?
+    //     );
 
     stream_stats_init();
 

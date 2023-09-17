@@ -133,12 +133,12 @@ static void ntrip_client_task(void *ctx) {
 
         char *authorization = http_auth_basic_header(username, password);
         snprintf(buffer, BUFFER_SIZE, "GET /%s HTTP/1.1" NEWLINE \
-                "User-Agent: NTRIP %s/%s" NEWLINE \
+                "User-Agent: NTRIP %s" NEWLINE \
                 "Authorization: %s" NEWLINE
                 NEWLINE
-                , mountpoint, NTRIP_CLIENT_NAME, &esp_ota_get_app_description()->version[1], authorization);
+                , mountpoint, NTRIP_CLIENT_NAME, authorization);
         free(authorization);
-
+        
         int err = write(sock, buffer, strlen(buffer));
         ERROR_ACTION(TAG, err < 0, goto _error, "Could not send request to caster: %d %s", errno, strerror(errno));
 
